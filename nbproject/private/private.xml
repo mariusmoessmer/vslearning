@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/xampp/htdocs/VSLearning/app/database/migrations/2013_12_25_131130_create_users_table.php</file>
+            <file>file:/C:/xampp/htdocs/VSLearning/app/database/migrations/2013_12_25_160621_create_exercises_table.php</file>
+            <file>file:/C:/xampp/htdocs/VSLearning/app/models/Exercise.php</file>
+            <file>file:/C:/xampp/htdocs/VSLearning/app/models/User.php</file>
+            <file>file:/C:/xampp/htdocs/VSLearning/app/models/ExerciseType.php</file>
+            <file>file:/C:/xampp/htdocs/VSLearning/app/database/seeds/ExerciseTypeTableSeeder.php</file>
+            <file>file:/C:/xampp/htdocs/VSLearning/app/database/seeds/UserTableSeeder.php</file>
+            <file>file:/C:/xampp/htdocs/VSLearning/app/database/seeds/ExerciseTableSeeder.php</file>
+            <file>file:/C:/xampp/htdocs/VSLearning/app/database/seeds/DatabaseSeeder.php</file>
+            <file>file:/C:/xampp/htdocs/VSLearning/app/database/migrations/2013_12_24_104308_create_exercisetypes_table.php</file>
+        </group>
+    </open-files>
+</project-private>
