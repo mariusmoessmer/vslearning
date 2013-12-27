@@ -1,36 +1,46 @@
 <?php
+Route::get ( '/', array (
+		'as' => 'home',
+		'uses' => 'LoginController@index' 
+) );
 
-// global
-Route::get('/', array('as' => 'home', function(){
-    // if user is not logged in --> redirect to login-page immediately
-    if (Auth::guest()) {
-        return Redirect::route('login');
-    }
-    // if user is already logged in --> redirect to its profile-page immediately
-    else if(Auth::check()) {
-        return Redirect::route('profile');
-    }
-    else
-    {
-        throw new Exception("unknown Marius-State!");
-    }
-}));
+Route::post ( '/login', 'LoginController@login' )->before ( 'guest' );
 
-// login and logout
-Route::get('login', array('as' => 'login', 'uses' => function(){
-    // once a user is logged --> do not show login-view again!
-    if(Auth::check()) {
-        return Redirect::route('profile');
-    }else
-    {
-        return (new LoginController)->index();
-    }
-}));
-Route::post('login', 'LoginController@login')->before('guest');
-Route::get('logout', array('as' => 'logout', 'uses' => 'LoginController@logout'))->before('auth');
+Route::get ( '/logout', array (
+		'as' => 'logout',
+		'uses' => 'LoginController@logout' 
+) )->before ( 'auth' );
 
 // user profile
-Route::get('profile', array('as' => 'profile', 'uses' => 'ProfileController@index'))->before('auth');
+Route::get ( '/profile', array (
+		'as' => 'profile',
+		'uses' => 'ProfileController@index' 
+) )->before ( 'auth' );
 
 // exercies
-Route::get('exercises', 'ExerciseController@lst')->before('auth');
+Route::get ( '/courses', array (
+		'as' => 'profile',
+		'uses' => 'LearningController@index' 
+) )->before ( 'auth' );
+Route::get ( '/exercises', 'ExerciseController@lst' )->before ( 'auth' );
+
+Route::get ( '/times', array (
+		'as' => 'times',
+		'uses' => 'TimesController@index' 
+) );
+
+Route::get ( '/konjugations', array (
+		'as' => 'konjugations',
+		'uses' => 'KonjugationsController@index' 
+) );
+
+Route::get ( '/comparisons', array (
+		'as' => 'comparisons',
+		'uses' => 'ComparisonsController@index' 
+) );
+
+Route::get ( '/comparisons/wrong', 'ComparisonsController@wrong' );
+Route::get ( '/comparisons/latest', 'ComparisonsController@latest' );
+
+Route::post ( '/comparisons/{id}/check', 'ComparisonsController@check' );
+

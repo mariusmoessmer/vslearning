@@ -1,5 +1,8 @@
 var app = app || {};
-$(function() {
-// Kick things off by creating the **App**.
-    new app.AppView();
+$(document).ready(function() {
+	// Kick things off by creating the **App**.
+	new app.AppView();
+
+	$('#previouse-exercices').dataTable();
+
 });

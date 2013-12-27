@@ -1,5 +1,4 @@
 <?php
-
 class DatabaseSeeder extends Seeder {
 
 	/**
@@ -7,12 +6,14 @@ class DatabaseSeeder extends Seeder {
 	 *
 	 * @return void
 	 */
-	public function run()
-	{
+	public function run() {
 		Eloquent::unguard();
-                $this->call('ExerciseTypeTableSeeder');
+		$this->call('ExerciseTypeTableSeeder');
 		$this->call('UserTableSeeder');
-                $this->call('ExerciseTableSeeder');
+		$this->call('ExerciseTableSeeder');
+		$this->call("AdjectiveSeeder");
+		$this->call("VerbSeed");
+		
 	}
 
 }
