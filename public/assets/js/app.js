@@ -4,5 +4,6 @@ $(document).ready(function() {
 	new app.AppView();
 
 	$('#previouse-exercices').dataTable();
+	$('#courses-table').dataTable();
 
 });

@@ -14,6 +14,12 @@ class DatabaseSeeder extends Seeder {
 		$this->call("AdjectiveSeeder");
 		$this->call("VerbSeed");
 		
+		$this->call("VerbKonjSeeder");
+		
+		
+// 		$this->call("VerbTimeSeeder");
+		
+		
 	}
 
 }

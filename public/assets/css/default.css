@@ -2,14 +2,27 @@ body {
 	padding-top: 50px;
 }
 
+.content {
+	margin-top: 50px;
+}
+
 .word {
 	border: solid 1px;
 	margin-top: 5px;
 }
 
+.word_wrong {
+	border: solid 1px red;
+}
+
+.word_correct {
+	border: solid 1px green;
+}
+
 button.expander {
 	float: right;
 }
-.word-expander{
-	padding:50px 0 10px 50px;
+
+.word-expander {
+	padding: 50px 0 10px 50px;
 }

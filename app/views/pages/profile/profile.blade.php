@@ -11,7 +11,7 @@
 			<div class="container">
 				<?php if(isset($exercises)):?>
 	
-		<table class="my-exes" id="previouse-exercices">
+		<table class="datatable" id="previouse-exercices">
 					<thead>
 						<tr>
 							<th>#</th>

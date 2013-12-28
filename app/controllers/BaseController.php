@@ -1,6 +1,7 @@
 <?php
 class BaseController extends Controller {
 	protected $layout = "layouts.master";
+	protected $autorender = true;
 
 	/**
 	 * Setup the layout used by the controller.
@@ -8,7 +9,7 @@ class BaseController extends Controller {
 	 * @return void
 	 */
 	protected function setupLayout() {
-		if(!is_null($this->layout)){
+		if(!is_null($this->layout) && $this->autorender){
 			$this->layout = View::make($this->layout);
 		}
 	}
