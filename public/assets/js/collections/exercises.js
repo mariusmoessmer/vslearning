@@ -1,4 +1,4 @@
-var app = app || {};
+var exercisesapp = exercisesapp || {};
 // Exercise Collection
 // ---------------
 
@@ -6,7 +6,7 @@ var app = app || {};
 // server.
 var ExerciseList = Backbone.Collection.extend({
     // Reference to this collection's model.
-    model: app.Exercise,
+    model: exercisesapp.Exercise,
     url: '/exercises',
     // Exercises are sorted by their original insertion order.
     comparator: function(exercise) {
@@ -14,4 +14,4 @@ var ExerciseList = Backbone.Collection.extend({
     }
 });
 // Create our global collection of **Exercise**.
-app.Exercises = new ExerciseList();
+exercisesapp.Exercises = new ExerciseList();

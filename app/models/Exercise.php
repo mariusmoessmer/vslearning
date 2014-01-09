@@ -27,5 +27,14 @@ class Exercise extends Eloquent {
     public function scopeVisible($query) {
         return $query->where('visible', '=', 1);
     }
+    
+    
+    public function configurationObj() {
+        return json_decode($this->configuration_json);
+    }
+    
+    public function exerciseVerbs() {
+        return $this->hasMany('ExerciseVerb');
+    }    
 
 }

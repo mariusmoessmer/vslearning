@@ -18,9 +18,11 @@ class CreateExercisesTable extends Migration {
             $t->boolean('visible')->default(true);
             $t->integer('sequence_number');
             $t->integer('exercisetype_id')->unsigned();
-            $t->string('configuration_json');
+            $t->integer('schoolclass_id')->unsigned()->nullable();
+            $t->text('configuration_json');
             $t->timestamps();
             $t->foreign('exercisetype_id')->references('id')->on('exercisetypes')->onDelete('cascade');
+            $t->foreign('schoolclass_id')->references('id')->on('schoolclasses')->onDelete('set null');
         });
     }
 

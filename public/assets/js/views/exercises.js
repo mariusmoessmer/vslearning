@@ -1,11 +1,10 @@
-var app = app || {};
+var exercisesapp = exercisesapp || {};
 // Todo Item View
 // --------------
 // The DOM element for a todo item...
-app.ExerciseView = Backbone.View.extend({
+exercisesapp.ExerciseView = Backbone.View.extend({
     // Cache the template function for a single item.
     exerciseTemplate: _.template($('#exercise-template').html()),
-    modalTemplate: _.template($('#exercise-modal-template').html()),
     // The DOM events specific to an item.
     events: {
         'click #exercise': 'startExercise', // NEW
@@ -25,10 +24,6 @@ app.ExerciseView = Backbone.View.extend({
     startExercise: function() {
         var exerciseObj = this.model.toJSON();
         
-        this.$el.append(this.modalTemplate(exerciseObj));
-        this.$('#exercise-modal').on('hidden.bs.modal', function () {
-            $(this).remove();
-        });
-        this.$('#exercise-modal').modal('show');
+        //this.$el.append(this.modalTemplate(exerciseObj));
     }
 });

@@ -1,6 +1,6 @@
 <?php
 
-// global
+// globale
 Route::get('/', array('as' => 'home', function(){
     // if user is not logged in --> redirect to login-page immediately
     if (Auth::guest()) {
@@ -34,3 +34,5 @@ Route::get('profile', array('as' => 'profile', 'uses' => 'ProfileController@inde
 
 // exercies
 Route::get('exercises', 'ExerciseController@lst')->before('auth');
+Route::get('exercisetest/{id}/create', 'ExerciseTestController@create')->before('auth');
+Route::get('exercisetest/{id}', 'ExerciseTestController@get')->before('auth');

@@ -1,5 +1,5 @@
-var app = app || {};
+var exercisesapp = exercisesapp || {};
 
-app.Exercise = Backbone.Model.extend({
+exercisesapp.Exercise = Backbone.Model.extend({
     
 });

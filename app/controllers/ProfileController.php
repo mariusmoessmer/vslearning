@@ -5,6 +5,6 @@ class ProfileController extends BaseController {
     
 	public function index()
         {
-            return  View::make('profile');
+            return  View::make('pages.profile.profile');
         }
 }
