@@ -15,7 +15,8 @@ exercisetestapp.TenseTestView = Backbone.View.extend({
     },
     render: function() {
         'use strict';
-        var json = JSON.parse(JSON.stringify(this.model.toJSON()));
+        //var json = JSON.parse(JSON.stringify(this.model.toJSON()));
+        var json = this.model;
         $(this.el).empty();
         $(this.el).append(this.template(json));
         $(this.el).focus(); 
@@ -31,7 +32,7 @@ exercisetestapp.TenseTestView = Backbone.View.extend({
                 $(this).attr('disabled','disabled');
                 var i = this.id;
                 var userAnswer = $(this).val().trim();
-                var currentTense = currModel.get('tenses')[i];
+                var currentTense = currModel.tenses[i];
                 currentTense.user_answer = userAnswer;
                 
                 if(currentTense.user_answer !== currentTense.correct_answer)

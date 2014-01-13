@@ -25,7 +25,7 @@
 <!-- ************** exercisetest ***************** -->
 {{HTML::script("assets/js/models/exercisetest.js") }}
 {{HTML::script("assets/js/models/task.js") }}
-{{HTML::script("assets/js/views/testapp.js") }}
+{{HTML::script("assets/js/views/testappview.js") }}
 {{HTML::script("assets/js/views/testconfirmview.js") }}
 {{HTML::script("assets/js/views/tensetestview.js") }}
 {{HTML::script("assets/js/views/wizardview.js") }}

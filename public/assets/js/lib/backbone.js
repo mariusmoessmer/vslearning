@@ -1141,6 +1141,16 @@
       params.contentType = 'application/json';
       params.data = JSON.stringify(options.attrs || model.toJSON(options));
     }
+    
+    /*if(model)
+    {
+        if(options)
+        {
+            alert('0.'+(JSON.stringify(options)));
+        }
+        alert('1.'+(model.toJSON(options)));
+        alert('2.'+(model.toJSON()));
+    }*/
 
     // For older servers, emulate JSON by encoding the request into an HTML-form.
     if (options.emulateJSON) {

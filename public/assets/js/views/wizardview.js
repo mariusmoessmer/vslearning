@@ -3,7 +3,7 @@ var exercisetestapp = exercisetestapp || {};
 exercisetestapp.WizardView = Backbone.View.extend({
     tagName: 'div',
     initialize: function() {
-        _.bindAll(this, 'render', 'moveNext', 'addView', 'save');
+        _.bindAll(this, 'render', 'moveNext', 'addView', 'finish');
         $(this.el).append($($("#wizard-template").html()));
         this.wizardViewTabs = $(this.el).find('#wizard-view-tabs');
         this.wizardViewContainer = $(this.el).find('#wizard-view-container');
@@ -11,7 +11,7 @@ exercisetestapp.WizardView = Backbone.View.extend({
     },
     events: {
         "click .btn-nextView": "moveNext",
-        "click .btn-save": "save",
+        "click .btn-save": "finish",
     },
     render: function() {
         var currentView = this.wizardViews.getCurrent();
@@ -61,18 +61,40 @@ exercisetestapp.WizardView = Backbone.View.extend({
     moveNext: function() {
         if (this.updateModel())
         {
-            this.wizardViews.moveNext();
+            var next = this.wizardViews.moveNext();
+            if(next != null && next.getNext() == null)
+            {
+                this.commit();
+            }
             this.render();
             return false;
         }
+    },
+    commit: function() {
+        var tasks = exercisetestapp.ExerciseTestObj.get('tasks');
+        
+        var answers = new Array();
+        for (var i=0;i<tasks.length; i++)
+        {
+            var tenses = tasks[i].tenses;
+            for(var j=0;j<tenses.length;j++)
+            {
+                var tense = tenses[j];
+                answers.push({ id: tense.id, user_answer: tense.user_answer });    
+            }
+            
+        }
+        
+        exercisetestapp.ExerciseTestObj.set({'answers': answers});
+        exercisetestapp.ExerciseTestObj.unset('tasks', {silent: true});
+        exercisetestapp.ExerciseTestObj.save();
+        exercisetestapp.ExerciseTestObj.set('tasks',tasks, {silent: true});
     },
     updateModel: function() {
         return this.wizardViews.getCurrent().getView().updateModel();
         //favor view update method convention to force synchronous updates
     },
-    save: function() {
-        //
-        
+    finish: function() {       
         // goto user-profile-page
         window.location = '/';
     }

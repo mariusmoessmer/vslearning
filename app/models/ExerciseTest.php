@@ -11,5 +11,7 @@ class ExerciseTest extends Eloquent {
     public function tenseExerciseTasks() {
         return $this->hasMany('TenseExerciseTask', 'exercisetest_id');
     }
+    
+    protected $visible = array('id', 'tenseExerciseTasks');
 }
 

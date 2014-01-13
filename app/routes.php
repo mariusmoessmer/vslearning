@@ -36,3 +36,4 @@ Route::get('profile', array('as' => 'profile', 'uses' => 'ProfileController@inde
 Route::get('exercises', 'ExerciseController@lst')->before('auth');
 Route::get('exercisetest/{id}/create', 'ExerciseTestController@create')->before('auth');
 Route::get('exercisetest/{id}', 'ExerciseTestController@get')->before('auth');
+Route::put('exercisetest/{id}', 'ExerciseTestController@update')->before('auth');

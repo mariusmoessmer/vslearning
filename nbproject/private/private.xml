@@ -4,51 +4,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/vslearning/app/database/migrations/2014_01_08_200850_create_exerciseverbs_table.php</file>
-            <file>file:/C:/xampp/htdocs/vslearning/app/controllers/ExerciseTestController.php</file>
-            <file>file:/C:/xampp/htdocs/vslearning/public/assets/js/exercisesapp.js</file>
-            <file>file:/C:/xampp/htdocs/vslearning/app/models/TensePersonConjugation.php</file>
-            <file>file:/C:/xampp/htdocs/vslearning/app/models/User.php</file>
-            <file>file:/C:/xampp/htdocs/vslearning/app/database/seeds/ExerciseTableSeeder.php</file>
-            <file>file:/C:/xampp/htdocs/vslearning/app/database/migrations/2013_01_08_161228_create_schools_table.php</file>
-            <file>file:/C:/xampp/htdocs/vslearning/app/controllers/LoginController.php</file>
-            <file>file:/C:/xampp/htdocs/vslearning/app/database/seeds/TenseTypeTableSeeder.php</file>
-            <file>file:/C:/xampp/htdocs/vslearning/public/assets/js/views/testconfirmview.js</file>
-            <file>file:/C:/xampp/htdocs/vslearning/app/routes.php</file>
-            <file>file:/C:/xampp/htdocs/vslearning/app/models/ExerciseTest.php</file>
-            <file>file:/C:/xampp/htdocs/vslearning/app/views/layouts/master.blade.php</file>
-            <file>file:/C:/xampp/htdocs/vslearning/app/database/migrations/2014_01_08_161326_create_verbs_table.php</file>
-            <file>file:/C:/xampp/htdocs/vslearning/app/views/pages/profile/profile.blade.php</file>
-            <file>file:/C:/xampp/htdocs/vslearning/app/database/migrations/2013_12_25_160621_create_exercises_table.php</file>
-            <file>file:/C:/xampp/htdocs/vslearning/app/controllers/BaseController.php</file>
-            <file>file:/C:/xampp/htdocs/vslearning/app/filters.php</file>
-            <file>file:/C:/xampp/htdocs/vslearning/app/controllers/ProfileController.php</file>
-            <file>file:/C:/xampp/htdocs/vslearning/public/assets/js/views/wizardview.js</file>
-            <file>file:/C:/xampp/htdocs/vslearning/app/database/migrations/2014_01_08_185846_create_exercisetests_table.php</file>
-            <file>file:/C:/xampp/htdocs/vslearning/app/database/migrations/2013_01_08_161248_create_schoolclasses_table.php</file>
-            <file>file:/C:/xampp/htdocs/vslearning/public/assets/js/views/tensetestview.js</file>
-            <file>file:/C:/xampp/htdocs/vslearning/app/views/includes/footer.blade.php</file>
-            <file>file:/C:/xampp/htdocs/vslearning/app/views/pages/home/home.blade.php</file>
-            <file>file:/C:/xampp/htdocs/vslearning/app/database/seeds/DatabaseSeeder.php</file>
-            <file>file:/C:/xampp/htdocs/vslearning/app/models/ExerciseVerb.php</file>
             <file>file:/C:/xampp/htdocs/vslearning/app/database/seeds/UserTableSeeder.php</file>
-            <file>file:/C:/xampp/htdocs/vslearning/app/controllers/ExerciseController.php</file>
-            <file>file:/C:/xampp/htdocs/vslearning/app/models/Exercise.php</file>
             <file>file:/C:/xampp/htdocs/vslearning/app/models/Verb.php</file>
             <file>file:/C:/xampp/htdocs/vslearning/public/assets/js/testapp.js</file>
-            <file>file:/C:/xampp/htdocs/vslearning/app/controllers/ExerciseSessionController.php</file>
-            <file>file:/C:/xampp/htdocs/vslearning/public/assets/css/default.css</file>
+            <file>file:/C:/xampp/htdocs/vslearning/app/controllers/ExerciseTestController.php</file>
+            <file>file:/C:/xampp/htdocs/vslearning/app/models/User.php</file>
+            <file>file:/C:/xampp/htdocs/vslearning/app/database/seeds/ExerciseTableSeeder.php</file>
+            <file>file:/C:/xampp/htdocs/vslearning/app/database/seeds/TenseTypeTableSeeder.php</file>
+            <file>file:/C:/xampp/htdocs/vslearning/public/assets/js/models/exercisetest.js</file>
+            <file>file:/C:/xampp/htdocs/vslearning/public/assets/js/views/testconfirmview.js</file>
+            <file>file:/C:/xampp/htdocs/vslearning/public/assets/js/views/testappview.js</file>
+            <file>file:/C:/xampp/htdocs/vslearning/app/models/TenseType.php</file>
             <file>file:/C:/xampp/htdocs/vslearning/app/database/seeds/SchoolClassTableSeeder.php</file>
-            <file>file:/C:/xampp/htdocs/vslearning/app/database/migrations/2013_12_25_131130_create_users_table.php</file>
-            <file>file:/C:/xampp/htdocs/vslearning/app/database/migrations/2013_12_24_104308_create_exercisetypes_table.php</file>
-            <file>file:/C:/xampp/htdocs/vslearning/app/models/ExerciseType.php</file>
-            <file>file:/C:/xampp/htdocs/vslearning/public/assets/js/views/exercisesapp.js</file>
-            <file>file:/C:/xampp/htdocs/vslearning/app/views/pages/test/tenseexercisetest.blade.php</file>
-            <file>file:/C:/xampp/htdocs/vslearning/public/assets/js/collections/exercises.js</file>
-            <file>file:/C:/xampp/htdocs/vslearning/app/database/migrations/2014_01_08_190256_create_tenseexercisetasks_table.php</file>
-            <file>file:/C:/xampp/htdocs/vslearning/public/assets/js/views/confirmview.js</file>
-            <file>file:/C:/xampp/htdocs/vslearning/app/models/School.php</file>
-            <file>file:/C:/xampp/htdocs/vslearning/app/database/migrations/2014_01_08_151355_create_tensetypes_table.php</file>
+            <file>file:/C:/xampp/htdocs/vslearning/app/database/seeds/ExerciseTypeTableSeeder.php</file>
+            <file>file:/C:/xampp/htdocs/vslearning/app/routes.php</file>
+            <file>file:/C:/xampp/htdocs/vslearning/app/database/seeds/VerbTableSeeder.php</file>
+            <file>file:/C:/xampp/htdocs/vslearning/public/assets/js/views/wizardview.js</file>
+            <file>file:/C:/xampp/htdocs/vslearning/public/assets/js/views/tensetestview.js</file>
+            <file>file:/C:/xampp/htdocs/vslearning/app/models/TenseExerciseTask.php</file>
         </group>
     </open-files>
 </project-private>

@@ -10,14 +10,15 @@ exercisetestapp.TestConfirmView = Backbone.View.extend({
     render: function() {
         'use strict';
         //var json = JSON.parse(JSON.stringify(this.model.toJSON()));
-        var tasks = this.model;
+        
+        var tasks = exercisetestapp.ExerciseTestObj.toJSON().tasks;
         
         var quCount = _.reduce(tasks, function(sum, task) {
-            return sum += task.get('tenses').length;
+            return sum += task.tenses.length;
         },0);
         
         var correctACount = _.reduce(tasks, function(sum, task) {
-            return sum += _.filter(task.get('tenses'), 
+            return sum += _.filter(task.tenses, 
                 function(tense){ 
                     return tense.user_answer === tense.correct_answer 
                 }).length;

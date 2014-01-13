@@ -47,7 +47,7 @@ class ExerciseTestController extends BaseController
                 foreach ($doneTasksForVerb as $doneTask) {
                     $person_num = $doneTask->person_number;
                     $updated_at = $doneTask->updated_at;
-                    if (!isset($person_last_updated_at[$person_num]) || $person_last_updated_at[$person_num] < $doneTask->updated_at) {
+                    if (!isset($person_last_updated_at[$person_num]) || $person_last_updated_at[$person_num] < $updated_at) {
                         $person_last_updated_at[$person_num] = $updated_at;
                     }
                 }
@@ -71,19 +71,18 @@ class ExerciseTestController extends BaseController
                 if (count($persons_not_learned) > 0) {
                     $person_for_task = $persons_not_learned[array_rand($persons_not_learned)];
                 }
-                
-                foreach($tenses as $tense)
-                {
+
+                foreach ($tenses as $tense) {
                     $verb = $exerciseVerb->verb;
                     $task = new TenseExerciseTask;
                     $task->verb_id = $verb->id;
                     $task->tensetype_id = $tense;
                     $task->person_number = $person_for_task;
                     $test->tenseExerciseTasks()->save($task);
-                }                
+                }
             }
         }
-            
+
         return View::make('pages.test.tenseexercisetest', array('exercise' => $exercise, 'exercisetest' => $test));
     }
 
@@ -138,14 +137,101 @@ class ExerciseTestController extends BaseController
     }
 
     public function get($exerciseTestID) {
-        if (!$exerciseTest = ExerciseTest::with('tenseExerciseTasks')->find($exerciseTestID)) {
+        if (!$exerciseTest = ExerciseTest::with('tenseExerciseTasks.verb')->find($exerciseTestID)) {
             throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
         }
 
         $exerciseTest->test_started = \Carbon\Carbon::now();
         $exerciseTest->save();
 
-        return $exerciseTest->toJson();
+        $groupedTenseExTasks = array();
+        foreach ($exerciseTest->tenseExerciseTasks as $tenseExTask) {
+            $id = $tenseExTask->verb->infinitive;
+            if (isset($groupedTenseExTasks[$id])) {
+                $groupedTenseExTasks[$id][] = $tenseExTask;
+            } else {
+                $groupedTenseExTasks[$id] = array($tenseExTask);
+            }
+        }
+
+        $jsonObj = new stdClass();
+        $jsonObj->id = $exerciseTest->id;
+        $jsonObj->tasks = array();
+
+        foreach ($groupedTenseExTasks as $infinitve => $tenseExTasks) {
+            $task = new stdClass();
+            $task->infinitive = $infinitve;
+            $task->tenses = array();
+            foreach ($tenseExTasks as $tenseExTask) {
+                $tense = new stdClass();
+                $tense->id = $tenseExTask->id;
+                $tense->tense = $tenseExTask->tenseType->name;
+                $tense->question = $tenseExTask->getCorrectAnswer();
+
+                $parseAnswer = $this->parseAnswers($tense->question);
+                $tense->const_answer = $parseAnswer->const_answer;
+                $tense->correct_answer = $parseAnswer->correct_answer;
+
+                $task->tenses[] = $tense;
+            }
+
+            $jsonObj->tasks[] = $task;
+        }
+
+        return json_encode($jsonObj);
+    }
+
+    private function parseAnswers($wholeAnswer) {
+        $test_str = $wholeAnswer;
+        $start_pos = stripos($test_str, '|') + 1;
+        $end_pos = stripos($test_str, '|', $start_pos);
+        $result = new stdClass();
+        if ($start_pos && $end_pos) {
+            $result->const_answer = substr($test_str, 0, $start_pos - 2);
+            $result->correct_answer = substr($test_str, $start_pos, $end_pos - $start_pos);
+        }
+
+        return $result;
+    }
+
+    public function update($exerciseTestID) {
+        if (!$exerciseTest = ExerciseTest::with('tenseExerciseTasks.verb')->find($exerciseTestID)) {
+            throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+        }
+
+
+        $payload_json = Request::getContent();
+        $completed_test = json_decode($payload_json);
+        $answers = $completed_test->answers;
+        if (!$answers) {
+            throw new \Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+        }
+
+        foreach ($exerciseTest->tenseExerciseTasks as $tenseExTask) {
+            $was_found = false;
+            $id = $tenseExTask->id;
+            foreach ($answers as $answer) {
+                if ($answer->id == $id) {
+                    $tenseExTask->user_answer = $answer->user_answer;                    
+                    $parsed_answer = $this->parseAnswers($tenseExTask->getCorrectAnswer());
+                    $tenseExTask->set_answer_is_correct(strcmp($tenseExTask->user_answer, $parsed_answer->correct_answer) == 0);
+                    $was_found = true;
+                    break;
+                }
+            }
+
+            if (!$was_found) {
+                throw new \Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+            }
+        }
+        
+        //$exerciseTest->tenseExerciseTasks->save();
+        $exerciseTest->test_finished = \Carbon\Carbon::now();
+        // save exercisetest and all of its relationships!
+        $exerciseTest->push();
+
+
+        print_r($exerciseTest);
     }
 
 }
