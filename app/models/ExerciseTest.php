@@ -1,6 +1,6 @@
 <?php
 
-class ExerciseTest extends Eloquent {
+class ExerciseTest extends BaseEloquent {
     /**
      * The database table used by the model.
      *

@@ -11,7 +11,7 @@
  *
  * @author marius
  */
-class School extends Eloquent {
+class School extends BaseEloquent {
 
     /**
      * The database table used by the model.
@@ -19,6 +19,7 @@ class School extends Eloquent {
      * @var string
      */
     protected $table = 'schools';
+    protected $guarded = array('id', 'created_at', 'updated_at');
     
     public function schoolClasses() {
         return $this->hasMany('SchoolClass');

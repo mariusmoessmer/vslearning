@@ -4,7 +4,7 @@
 
 <div class="container">
       <form class="form-signin" action="login" method="post">
-      <h2 class="form-signin-heading text-muted">Lernsystem</h2>
+      <h2 class="form-signin-heading text-muted">kileo - Login</h2>
 		<?php if(isset($msg) && isset($class)):?>
             <div  class="{{ $class }}">{{ $msg }}</div>
         <?php endif; ?>

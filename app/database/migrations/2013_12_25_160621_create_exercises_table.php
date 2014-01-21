@@ -13,10 +13,7 @@ class CreateExercisesTable extends Migration {
         Schema::create('exercises', function($t) {
             $t->increments('id');
             $t->string('name');
-            $t->string('description')->nullable();
-            $t->string('explanation')->nullable();
-            $t->boolean('visible')->default(true);
-            $t->integer('sequence_number');
+            $t->string('description');
             $t->integer('exercisetype_id')->unsigned();
             $t->integer('schoolclass_id')->unsigned()->nullable();
             $t->text('configuration_json');

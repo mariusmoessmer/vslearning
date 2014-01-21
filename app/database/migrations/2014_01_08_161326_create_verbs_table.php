@@ -13,7 +13,7 @@ class CreateVerbsTable extends Migration
     public function up() {
         Schema::create('verbs', function($t) {
             $t->increments('id');
-            $t->string('infinitive');
+            $t->string('infinitive')->unique();
             $t->integer('praesenstensepersonconjugation_id')->unsigned()->nullable()->unique();
             $t->integer('perfekttensepersonconjugation_id')->unsigned()->nullable()->unique();
             $t->integer('praeteritumtensepersonconjugation_id')->unsigned()->nullable()->unique();

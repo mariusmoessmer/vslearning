@@ -3,7 +3,7 @@
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class User extends Eloquent implements UserInterface
+class User extends BaseEloquent implements UserInterface
 {
 
     /**
@@ -12,6 +12,7 @@ class User extends Eloquent implements UserInterface
      * @var string
      */
     protected $table = 'users';
+    protected $guarded = array('id', 'created_at', 'updated_at');
 
     /**
      * The attributes excluded from the model's JSON form.

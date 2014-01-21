@@ -11,7 +11,7 @@
  *
  * @author marius
  */
-class TenseType extends Eloquent {
+class TenseType extends BaseEloquent {
     const PRAESENS_TYPE = 1;
     const PERFEKT_TYPE = 2;
     const PRAETERITUM_TYPE = 3;

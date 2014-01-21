@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-class TensePersonConjugation extends Eloquent
+class TensePersonConjugation extends BaseEloquent
 {
 
     /**
@@ -15,6 +15,7 @@ class TensePersonConjugation extends Eloquent
      * @var string
      */
     protected $table = 'tensepersonconjugations';
+    protected $guarded = array('id', 'created_at', 'updated_at');
 
     public function tenseType() {
         return $this->belongsTo('TenseType');

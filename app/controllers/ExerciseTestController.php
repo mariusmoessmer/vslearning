@@ -14,7 +14,7 @@
 class ExerciseTestController extends BaseController
 {
 
-    public function create($id) {
+    public function createByExerciseId($id) {
         if (!$exercise = Exercise::with('exerciseVerbs.verb')->find($id)) {
             throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
         }
@@ -71,7 +71,7 @@ class ExerciseTestController extends BaseController
                 if (count($persons_not_learned) > 0) {
                     $person_for_task = $persons_not_learned[array_rand($persons_not_learned)];
                 }
-
+                
                 foreach ($tenses as $tense) {
                     $verb = $exerciseVerb->verb;
                     $task = new TenseExerciseTask;
@@ -168,9 +168,8 @@ class ExerciseTestController extends BaseController
                 $tense->tense = $tenseExTask->tenseType->name;
                 $tense->question = $tenseExTask->getCorrectAnswer();
 
-                $parseAnswer = $this->parseAnswers($tense->question);
-                $tense->const_answer = $parseAnswer->const_answer;
-                $tense->correct_answer = $parseAnswer->correct_answer;
+                $tense->const_answer = $this->getPersonNameByNumber($tenseExTask->person_number);
+                $tense->correct_answer = $tense->question;
 
                 $task->tenses[] = $tense;
             }
@@ -180,18 +179,18 @@ class ExerciseTestController extends BaseController
 
         return json_encode($jsonObj);
     }
-
-    private function parseAnswers($wholeAnswer) {
-        $test_str = $wholeAnswer;
-        $start_pos = stripos($test_str, '|') + 1;
-        $end_pos = stripos($test_str, '|', $start_pos);
-        $result = new stdClass();
-        if ($start_pos && $end_pos) {
-            $result->const_answer = substr($test_str, 0, $start_pos - 2);
-            $result->correct_answer = substr($test_str, $start_pos, $end_pos - $start_pos);
+    
+    private function getPersonNameByNumber($number)
+    {
+        switch($number)
+        {
+            case 1: return 'ich';
+            case 2: return 'du';
+            case 3: return 'er';
+            case 4: return 'wir';
+            case 5: return 'ihr';
+            case 6: return 'sie';
         }
-
-        return $result;
     }
 
     public function update($exerciseTestID) {
@@ -210,11 +209,12 @@ class ExerciseTestController extends BaseController
         foreach ($exerciseTest->tenseExerciseTasks as $tenseExTask) {
             $was_found = false;
             $id = $tenseExTask->id;
+            $correct_answer = $tenseExTask->getCorrectAnswer();
+            var_dump($correct_answer);
             foreach ($answers as $answer) {
                 if ($answer->id == $id) {
                     $tenseExTask->user_answer = $answer->user_answer;                    
-                    $parsed_answer = $this->parseAnswers($tenseExTask->getCorrectAnswer());
-                    $tenseExTask->set_answer_is_correct(strcmp($tenseExTask->user_answer, $parsed_answer->correct_answer) == 0);
+                    $tenseExTask->set_answer_is_correct(strcmp($tenseExTask->user_answer, $correct_answer) == 0);
                     $was_found = true;
                     break;
                 }

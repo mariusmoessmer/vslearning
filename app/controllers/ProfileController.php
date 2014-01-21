@@ -5,10 +5,12 @@ class ProfileController extends BaseController {
     
 	public function index()
         {
-            $exercises = Exercise::visible()->orderBy('sequence_number', 'ASC')->get();
             
-            foreach($exercises as $exercise)
+            $schoolClassExercises = SchoolClassExercise::with('exercise')->where('schoolclass_id', Auth::user()->schoolclass_id)->orderBy('sequence_number')->get();
+            
+            foreach($schoolClassExercises as $scExercise)
             {
+                $exercise = $scExercise->exercise;
                 $id = $exercise->id;
                 $tests = ExerciseTest::with('tenseExerciseTasks')->where('user_id', Auth::user()->id)->where('exercise_id', $id)->whereNotNull('test_finished')->get();
                 $count_questions_correct = 0;
@@ -29,6 +31,6 @@ class ProfileController extends BaseController {
                 $exercise->count_tests = count($tests);
             }
             
-            return  View::make('pages.profile.profile', array('exercises' => $exercises));
+            return  View::make('pages.profile.profile', array('schoolClassExercises' => $schoolClassExercises));
         }
 }

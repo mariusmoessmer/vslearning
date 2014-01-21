@@ -11,7 +11,7 @@
  *
  * @author marius
  */
-class Exercise extends Eloquent {
+class Exercise extends BaseEloquent {
 
     /**
      * The database table used by the model.
@@ -19,6 +19,7 @@ class Exercise extends Eloquent {
      * @var string
      */
     protected $table = 'exercises';
+    protected $guarded = array('id', 'created_at', 'updated_at');
 
     public function exerciseType() {
         return $this->belongsTo('ExerciseType');
@@ -36,5 +37,9 @@ class Exercise extends Eloquent {
     public function exerciseVerbs() {
         return $this->hasMany('ExerciseVerb');
     }    
+    
+    public function schoolClassExercises() {
+        return $this->hasMany('SchoolClassExercise');
+    }
 
 }

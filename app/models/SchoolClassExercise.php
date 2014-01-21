@@ -11,30 +11,18 @@
  *
  * @author marius
  */
-class Exercise extends Eloquent {
+class SchoolClassExercise extends BaseEloquent {
 
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'exercises';
-
-    public function exerciseType() {
-        return $this->belongsTo('ExerciseType');
-    }
-
-    public function scopeVisible($query) {
-        return $query->where('visible', '=', 1);
-    }
+    protected $table = 'schoolclassexercises';
+    protected $guarded = array('id', 'created_at', 'updated_at');
     
-    
-    public function configurationObj() {
-        return json_decode($this->configuration_json);
+    public function exercise() {
+        return $this->belongsTo('Exercise', 'exercise_id');
     }
-    
-    public function exerciseVerbs() {
-        return $this->hasMany('ExerciseVerb');
-    }    
 
 }

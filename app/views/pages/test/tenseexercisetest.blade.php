@@ -58,7 +58,7 @@
                     <p class="col-md-12 text-right progress-label">1 / 17</p>
             </div>    
             <h3>{{ $exercise->name }}</h3>
-            <p>{{ $exercise->explanation }}</p>
+            <p>Füge die Wörter in der entsprechenden Zeitform ein!</p>
             </br>
             
             <!-- View Container -->        

@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-class TenseExerciseTask extends Eloquent
+class TenseExerciseTask extends BaseEloquent
 {
 
     /**

@@ -7,24 +7,26 @@
                     class="icon-bar"></span> <span class="icon-bar"></span> <span
                     class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ route('home') }}">Lernsystem</a>
+            <a class="navbar-brand" href="{{ route('home') }}">kileo</a>
             <ul class="nav navbar-nav">
-                <?php if (Auth::user()): ?>
+                @if (Auth::user())
                     <div class="collapse navbar-collapse navbar-ex1-collapse">
                         <ul class="nav navbar-nav">
-                            <!--<li><a href="{{ URL::to("courses") }}">Learning</a></li>-->
+                            @if (Auth::user())
+                            <li><a href="{{ route('administration.index') }}">Administration</a></li>
+                            @endif
                         </ul>
                     </div>
-                <?php endif; ?>
+                @endif
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <?php if (Auth::user()): ?>
+                @if (Auth::user())
                     <li>{{ link_to(route('logout'),
     					'Abmelden ('.Auth::user()->username.')') }}</li>
-                <?php endif; ?>
+                @endif
             </ul>
         </div>
     </div>

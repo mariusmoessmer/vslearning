@@ -11,7 +11,7 @@
  *
  * @author marius
  */
-class Verb extends Eloquent
+class Verb extends BaseEloquent
 {
 
     /**
@@ -20,6 +20,7 @@ class Verb extends Eloquent
      * @var string
      */
     protected $table = 'verbs';
+    protected $guarded = array('id', 'created_at', 'updated_at');
 
     public function praesensTensePersonConjugation() {
         return $this->belongsTo('TensePersonConjugation', 'praesenstensepersonconjugation_id');

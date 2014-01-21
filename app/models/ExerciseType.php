@@ -11,7 +11,7 @@
  *
  * @author marius
  */
-class ExerciseType extends Eloquent {
+class ExerciseType extends BaseEloquent {
 
     const TENSEEXERCISE_TYPE = 1;
 
